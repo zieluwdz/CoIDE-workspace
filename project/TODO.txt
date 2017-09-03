@@ -1,0 +1,12 @@
+drv_lcd
+ - poprawic nazwy funkcji 
+  - poprawic zmienne globalne
+   - przemyslec archi, moze jednak razem z Touch Screen?? dzieki temu beda mialy jedne wspolne zmienne w jednym pliku. 
+   
+mdw_error
+ - dodac obsluge pamieci flash zeby zapisywac kazdy blad
+ 
+mdw_watchdog
+ - dodac watchdog do programu bo sie gowno rozrasta
+
+ 
