@@ -103,5 +103,7 @@ void lcd_printStr_hor	(char *str,long cur_x,long cur_y, long fg_color,long bg_co
 void Line				(long x_1,long y_1,long x_2,long y_2,char line_type,long color);
 void Rectan				(long x1,long y1,long x2,long y2,char tick,long color,char fill);
 void plot_picture_hor	(const char *bmp,long xad,long yad,long width,long high);
+void plot_mark_hor		(long x1,long y1,long x2,long y2,long color);
+void lcd_print3Cha_hor	(char ch1,char ch2,char ch3,long cur_x,long cur_y,long fg_color,long bg_color);
 
 #endif //DRV_LCD

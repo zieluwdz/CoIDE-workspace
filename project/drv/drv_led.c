@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "mdw_error.h"
+
 #define STACK_SIZE 128
 
 typedef struct
@@ -31,12 +33,12 @@ void drv_led_load(void)
 
 void drv_led_open(void)
 {
-	ledTask = NULL;
+	ledTask = 0u;
 
 	ledConfigMutex = CoCreateMutex();
 	if(E_CREATE_FAIL == ledConfigMutex)
 	{
-		while(1); // LOG ERROR
+		MDW_LOG_ERROR("Create Mutex error");
 	}
 }
 
@@ -47,7 +49,7 @@ void drv_led_start(drv_led_mode mode, uint32_t delay_ms)
 	runningConf.delay_ms	= delay_ms;
 	CoLeaveMutexSection(ledConfigMutex);
 
-	if(NULL != ledTask)
+	if(0u != ledTask)
 	{
 		while(1); 	//LOG_ERROR
 	}
@@ -64,10 +66,10 @@ void drv_led_stop(void)
 	StatusType status = CoDelTask(ledTask);
 	if(E_OK != status)
 	{
-		while(1); //LOG ERROR
+		MDW_LOG_ERROR("Delete Task error");
 	}
 
-	ledTask = NULL;
+	ledTask = 0u;
 }
 
 void drv_led_speed(uint32_t delay_ms)
@@ -134,7 +136,7 @@ static void led_task(void* pdata)
 				}
 				break;
 			default:
-				while(1); //LOG ERROR
+				MDW_LOG_ERROR("switch case default!");
 				//Code to execute if <variable> does not equal the value following any of the cases
 				break;
 		}

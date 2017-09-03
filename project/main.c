@@ -8,7 +8,9 @@
 #include "drv_pot.h"
 #include "drv_usrInt.h"
 #include "drv_lcd.h"
+#include "drv_tcs.h"
 
+#include "mdw_error.h"
 #include "mdw_log_debug.h"
 
 #define STACK_SIZE 128
@@ -33,7 +35,7 @@ int main(void)
 	mainTask = CoCreateTask(main_task,0,0,&mainTaskStk[STACK_SIZE-1],STACK_SIZE);
 	if(E_CREATE_FAIL == mainTask)
 	{
-		while(1); 	//LOG_ERROR
+		MDW_LOG_ERROR("Create Task error");
 	}
 
 	CoStartOS ();	//Start OS
@@ -43,6 +45,9 @@ int main(void)
 
 static void main_task(void* pdata)
 {
+	long x1=152,y1=119,x2=159,y2=126;
+	char num1,num2,num3;
+
 	drv_led_open();
 	drv_buzz_open();
 	drv_pot_open();
@@ -50,7 +55,7 @@ static void main_task(void* pdata)
 
 	mdw_log_open();
 
-	mdw_log_debug("Od taka linijka tekstu do ogarniecia");
+	mdw_log_debug("It is working well ;) well done ");
 
 	//Start up procedure
 	drv_led_start(k_OneWave,50u);
@@ -65,6 +70,12 @@ static void main_task(void* pdata)
 		uint32_t speed = drv_pot_getValue();
 		if(speed < 50u) speed = 50u;
 		drv_led_speed(speed);
+
+		if(Get_Status_Touch())         	    													// return (1) if tap touch screen is detected.
+			{
+			  TCS_Get_Point(20); 				// Calculate Position Address Display Keep result in valiable X,Y
+			  drv_led_stop();
+		    }
 	}
 
 	//TO DO

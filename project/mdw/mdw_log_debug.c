@@ -1,6 +1,7 @@
 #include "mdw_log_debug.h"
 #include "lpc17xx.h"
 #include "drv_lcd.h"
+#include "drv_tcs.h"
 
 #include <string.h> //strlen
 
@@ -14,9 +15,14 @@ void mdw_log_load(void)
 }
 
 void mdw_log_open(void)
-{							// Start Initial GLCD
+{								// Start Initial GLCD
   Initial_Hardware();			// Init SPI for communication between LCD and LPC
   Initial_GLCD_Hor();			// Init LCD
+
+  drv_tcs_load();
+  drv_tcs_open();
+
+  drv_tcs_calibrate();
 
   GLCD_BL_OFF();
   bg_color(WHITE);
@@ -48,7 +54,9 @@ void mdw_log_debug(char *text_nt)
 
 void mdw_log_close(void)
 {
-
+	//TO DO : add mdw_lcd_close and unload
+	drv_tcs_close();
+	drv_tcs_unload();
 }
 
 void mdw_log_unload(void)

@@ -38,16 +38,16 @@
 				<pathentry include="C:/dev/CoIDE/gcc/arm-none-eabi/include" kind="inc" path="" system="true"/>
 				<pathentry include="C:/dev/CoIDE/gcc/lib/gcc/arm-none-eabi/4.5.2/include" kind="inc" path="" system="true"/>
 				<pathentry include="C:/dev/CoIDE/gcc/lib/gcc/arm-none-eabi/4.5.2/include-fixed" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/cmsis" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/cmsis_boot" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/CoOS" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/CoOS/kernel" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/CoOS/portable" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/drv" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/lpc17xx_lib" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/lpc17xx_lib/include" kind="inc" path="" system="true"/>
-				<pathentry include="C:/Users/mati/Documents/CoIDE/project/mdw" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/cmsis" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/cmsis_boot" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/CoOS" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/CoOS/kernel" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/CoOS/portable" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/drv" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/lpc17xx_lib" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/lpc17xx_lib/include" kind="inc" path="" system="true"/>
+				<pathentry include="C:/Users/mati/Documents/Git/project/mdw" kind="inc" path="" system="true"/>
 				<pathentry kind="mac" name="__GNUC__" path="" value=""/>
 				<pathentry kind="mac" name="LPC1768" path="" value=""/>
 				<pathentry kind="out" path=""/>

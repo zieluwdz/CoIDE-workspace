@@ -575,7 +575,58 @@ void plot_picture_hor(const char *bmp,long xad,long yad,long width,long high)
   }
 }
 
+/****************************************************/
+/*               Function Plot Signe+               */
+/****************************************************/
+/* Paramiter : x1,y1 = Position start Line '-'(Hor) */
+/*                     plot from Left to Right      */
+/*             x2,y2 = Position start Line '|'(Ver) */
+/*                     plot from botton to top      */
+/****************************************************/
+void plot_mark_hor(long x1,long y1,long x2,long y2,long color)
+{
+  char i ;
 
-// GUI FUNCTIONS
+  // Plot Hor Line
+  GLCD_Write_Command(0x20);  																// Command Set Adddress Hor(X)
+  GLCD_Write_Data(y1);  																	// Sent X_address  CGRAM
+
+  GLCD_Write_Command(0x21);  																// Command Set Address Ver(Y)
+  GLCD_Write_Data(x1);  																	// Sent Y_address  CGRAM
+
+  GLCD_Write_Command(0x22);  																// Command Write Data RGB
+  for(i=0;i<15;i++)
+  GLCD_Write_Data(color);
+
+  // Plot Ver Line
+  GLCD_Write_Command(0x03);   																// Command Configure Entry Mode
+  GLCD_Write_Data(0x1220); 	 																// Color:RGB ,Incremen Ver & decrement Hor. address,Address update Hor.
+
+  GLCD_Write_Command(0x20);   																// Command Set Adddress Hor(X)
+  GLCD_Write_Data(y2);   																	// Sent X_Address CGRAM
+
+  GLCD_Write_Command(0x21);   																// Command Set Address Ver(Y)
+  GLCD_Write_Data(x2);	 																	// Sent Y_Address CGRAM
+
+  GLCD_Write_Command(0x22);   																// Command Write Data RGB
+  for(i=0;i<15;i++)
+  GLCD_Write_Data(color);
+
+  GLCD_Write_Command(0x03);   																// Command Configure Entry Mode
+  GLCD_Write_Data(0x1228); 	 																// Color:RGB ,Incremen Ver.& Decrement Hor. address,Address update Ver.
+}
+
+/***********************************/
+/* Function Print Text 3 Charecter */
+/***********************************/
+void lcd_print3Cha_hor(char ch1,char ch2,char ch3,long cur_x,long cur_y,long fg_color,long bg_color)
+{
+  text_7x11_hor(ch1,cur_x,cur_y,fg_color,bg_color);
+  cur_x += 8;
+  text_7x11_hor(ch2,cur_x,cur_y,fg_color,bg_color);
+  cur_x += 8;
+  text_7x11_hor(ch3,cur_x,cur_y,fg_color,bg_color);
+  cur_x += 8;
+}
 
 

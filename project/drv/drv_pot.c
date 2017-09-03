@@ -5,6 +5,8 @@
 #include "lpc17xx_pinsel.h"
 #include "lpc17xx_adc.h"
 
+#include "mdw_error.h"
+
 uint32_t 	adcValue = 0u;
 OS_FlagID	adcDoneFlag;
 
@@ -38,7 +40,7 @@ void drv_pot_open(void)
 	adcDoneFlag = CoCreateFlag(TRUE,FALSE);
 	if(E_CREATE_FAIL == adcDoneFlag)
 	{
-		while(1); //LOG ERROR
+		MDW_LOG_ERROR("Create Flag error");
 	}
 }
 
