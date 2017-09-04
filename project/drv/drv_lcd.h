@@ -4,6 +4,9 @@
 /* Font Table */
 extern const char ascii_7x11[95][14]; 	// font.c
 
+#define GLCD_BL_ON()	LPC_GPIO4->FIOPIN |=  (1UL << 28); 									// P4.28(BL=High:ON)
+#define	GLCD_BL_OFF()   LPC_GPIO4->FIOPIN &= ~(1UL << 28); 									// P4.28(BL=Low:OFF)
+
 /******************************/
 /* Define Color Code For GLCD */
 /* Color = RRRRR GGGGGG BBBBB */
@@ -73,37 +76,21 @@ extern const char ascii_7x11[95][14]; 	// font.c
 #define BT_LMAGENTA     15
 #define BT_LBROWN       16
 
-/* GLCD & Touch(ADS7846) Hardware Interface */
-#define GLCD_CS_HIGH()  LPC_GPIO0->FIOPIN |=  (1 << 6);										// P0.6(CS=High:Disable)
-#define GLCD_CS_LOW()	LPC_GPIO0->FIOPIN &= ~(1 << 6);										// P0.6(CS=Low:Enable)
+void drv_lcd_load				(void);
+void drv_lcd_open				(void);
 
-#define GLCD_BL_ON()	LPC_GPIO4->FIOPIN |=  (1UL << 28); 									// P4.28(BL=High:ON)
-#define	GLCD_BL_OFF()   LPC_GPIO4->FIOPIN &= ~(1UL << 28); 									// P4.28(BL=Low:OFF)
-
-
-#define PENIRQ_MASK     0x20 																// 00000000 00100000 00000000 00000000 = P0.21 => 8Bit Mask(00100000)
-#define PENIRQ_READ()  (LPC_GPIO0->FIOPIN >> 16) & PENIRQ_MASK;   							// 00000000 00100000 00000000 00000000 = P0.21 => 8Bit Mask(00100000)
-
-
-/* Prototype Function */
-void Initial_Hardware(void);		// Config. Hardware Interface
-void delay_ms(unsigned long ms);	// Delay Time
-
-/* Function Control Graphic LCD ET-TFT240320TP-3.2 Rev.B (Driver SPFD5408A)*/
-unsigned char	GLCD_SPI_Read_Write	(unsigned char DataByte);
-void 			GLCD_Write_Command	(unsigned char GLCD_Command);
-void 			GLCD_Write_Data		(unsigned int GLCD_Data);
-void 			Initial_GLCD_Hor	(void);
+void drv_lcd_close				(void);
+void drv_lcd_unload				(void);
 
 /* Function Application of GLCD */
-void bg_color			(long bg_color);
-void plot_dot_hor		(unsigned long Xadd,unsigned long Yadd,unsigned long color);
-void text_7x11_hor		(unsigned char row,long adx,long ady,long fg_clr,long bg_clr);
-void lcd_printStr_hor	(char *str,long cur_x,long cur_y, long fg_color,long bg_color);
-void Line				(long x_1,long y_1,long x_2,long y_2,char line_type,long color);
-void Rectan				(long x1,long y1,long x2,long y2,char tick,long color,char fill);
-void plot_picture_hor	(const char *bmp,long xad,long yad,long width,long high);
-void plot_mark_hor		(long x1,long y1,long x2,long y2,long color);
-void lcd_print3Cha_hor	(char ch1,char ch2,char ch3,long cur_x,long cur_y,long fg_color,long bg_color);
+void drv_lcd_bg_color			(long bg_color);
+void drv_lcd_plot_dot_hor		(unsigned long Xadd,unsigned long Yadd,unsigned long color);
+void drv_lcd_text_7x11_hor		(unsigned char row,long adx,long ady,long fg_clr,long bg_clr);
+void drv_lcd_printStr_hor		(char *str,long cur_x,long cur_y, long fg_color,long bg_color);
+void drv_lcd_line				(long x_1,long y_1,long x_2,long y_2,char line_type,long color);
+void drv_lcd_rectan				(long x1,long y1,long x2,long y2,char tick,long color,char fill);
+void drv_lcd_plot_picture_hor	(const char *bmp,long xad,long yad,long width,long high);
+void drv_lcd_plot_mark_hor		(long x1,long y1,long x2,long y2,long color);
+void drv_lcd_lcd_print3Cha_hor	(char ch1,char ch2,char ch3,long cur_x,long cur_y,long fg_color,long bg_color);
 
 #endif //DRV_LCD

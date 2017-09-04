@@ -9,6 +9,7 @@
 #include "drv_usrInt.h"
 #include "drv_lcd.h"
 #include "drv_tcs.h"
+#include "drv_sd.h"
 
 #include "mdw_error.h"
 #include "mdw_log_debug.h"
@@ -45,9 +46,6 @@ int main(void)
 
 static void main_task(void* pdata)
 {
-	long x1=152,y1=119,x2=159,y2=126;
-	char num1,num2,num3;
-
 	drv_led_open();
 	drv_buzz_open();
 	drv_pot_open();
@@ -70,14 +68,7 @@ static void main_task(void* pdata)
 		uint32_t speed = drv_pot_getValue();
 		if(speed < 50u) speed = 50u;
 		drv_led_speed(speed);
-
-		if(Get_Status_Touch())         	    													// return (1) if tap touch screen is detected.
-			{
-			  TCS_Get_Point(20); 				// Calculate Position Address Display Keep result in valiable X,Y
-			  drv_led_stop();
-		    }
 	}
-
 	//TO DO
 	//add close
 	//add unload
