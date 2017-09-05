@@ -4,8 +4,8 @@
 /* Font Table */
 extern const char ascii_7x11[95][14]; 	// font.c
 
-#define GLCD_BL_ON()	LPC_GPIO4->FIOPIN |=  (1UL << 28); 									// P4.28(BL=High:ON)
-#define	GLCD_BL_OFF()   LPC_GPIO4->FIOPIN &= ~(1UL << 28); 									// P4.28(BL=Low:OFF)
+#define GLCD_BL_ON()	LPC_GPIO4->FIOPIN |=  (1UL << 28);		// P4.28(BL=High:ON)
+#define	GLCD_BL_OFF()   LPC_GPIO4->FIOPIN &= ~(1UL << 28);		// P4.28(BL=Low:OFF)
 
 /******************************/
 /* Define Color Code For GLCD */

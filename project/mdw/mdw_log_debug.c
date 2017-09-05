@@ -11,7 +11,16 @@ static uint32_t currentLine;
 
 void mdw_log_load(void)
 {
-
+	/*
+	uint64_t x,y;
+		while(1)
+		{
+			if(drv_tcs_get_status_touch())
+		  	{
+				drv_tcs_get_point(20u,&x,&y);
+		  	}
+		}
+	*/
 }
 
 void mdw_log_open(void)
@@ -20,28 +29,17 @@ void mdw_log_open(void)
 	drv_lcd_load();
 	drv_lcd_open();
 
-  drv_tcs_load();
-  drv_tcs_open();
+	drv_tcs_load();
+	drv_tcs_open();
 
-  uint64_t x,y;
-
-  drv_tcs_calibrate();
-
-  while(1)
-	  {
-	  	  if(drv_tcs_get_status_touch())
-	  	  {
-	  		  drv_tcs_get_point(20u,&x,&y);
-	  	  }
-	  }
-  GLCD_BL_OFF();
-  drv_lcd_bg_color(WHITE);
-  drv_lcd_plot_picture_hor(image,0,230,80,80); // Plot LOGO
-  drv_lcd_printStr_hor("Doggy V0.0",80,225,BLACK,WHITE);
-  drv_lcd_printStr_hor("Log console",80,210,BLACK,WHITE);
-  drv_lcd_rectan(0u,150u,320u,0u,0u,BLACK,1u);
-  GLCD_BL_ON();
-  currentLine = 0u;
+	GLCD_BL_OFF();
+	drv_lcd_bg_color(WHITE);
+	drv_lcd_plot_picture_hor(image,0,230,80,80); // Plot LOGO
+	drv_lcd_printStr_hor("Snoopy V0.1",80,225,BLACK,WHITE);
+	drv_lcd_printStr_hor("Log console",80,210,BLACK,WHITE);
+	drv_lcd_rectan(0u,150u,320u,0u,0u,BLACK,1u);
+	GLCD_BL_ON();
+	currentLine = 0u;
  }
 
 void mdw_log_debug(char *text_nt)

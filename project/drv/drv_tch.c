@@ -3,49 +3,38 @@
 #include "LPC17xx.h"
 #include <CoOS.h>
 #include "string.h"
+
 #include "drv_lcd.h" //need for calibration
 
-#define	TCS_CS_HIGH()	LPC_GPIO1->FIOPIN |=  (1UL<<21);    								// P1.21(CS=High:Disable)
-#define	TCS_CS_LOW()    LPC_GPIO1->FIOPIN &= ~(1UL<<21);   									// P1.21(CS=Low:Enable)
+#define	TCS_CS_HIGH()	LPC_GPIO1->FIOPIN |=  (1UL<<21); // P1.21(CS=High:Disable)
+#define	TCS_CS_LOW()    LPC_GPIO1->FIOPIN &= ~(1UL<<21); // P1.21(CS=Low:Enable)
 
-#define PENIRQ_MASK     0x20 																// 00000000 00100000 00000000 00000000 = P0.21 => 8Bit Mask(00100000)
-#define PENIRQ_READ()  (LPC_GPIO0->FIOPIN >> 16) & PENIRQ_MASK;   							// 00000000 00100000 00000000 00000000 = P0.21 => 8Bit Mask(00100000)
-/*
-static uint32_t divider = 18446744073703326616u;
-static uint32_t An = 18446744073708997726u;
-static uint32_t Bn = 3341u;
-static uint32_t Cn = 104954099u;
-static uint32_t Dn = 18446744073709547296u;
-static uint32_t En = 18446744073709140924u;
-static uint32_t Fn = 85492412u;
-*/
+#define PENIRQ_MASK     0x20	// 00000000 00100000 00000000 00000000 = P0.21 => 8Bit Mask(00100000)
+#define PENIRQ_READ()  (LPC_GPIO0->FIOPIN >> 16) & PENIRQ_MASK;	// 00000000 00100000 00000000 00000000 = P0.21 => 8Bit Mask(00100000)
 
+static uint32_t divider = 4288822291u;
+static uint32_t An 		= 4294419517u;
+static uint32_t Bn 		= 5885u;
+static uint32_t Cn 		= 87562864u;
+static uint32_t Dn 		= 4294963279u;
+static uint32_t En 		= 4294557376u;
+static uint32_t Fn 		= 99380577u;
 
 // Variable for Touch Screen Function GLCD
 static uint64_t dif_adc_X,dif_adc_Y;
 static uint64_t buf_adc_X[100],buf_adc_Y[100];
 static uint64_t ave_adc_X,ave_adc_Y;
-static uint64_t tcs_ave_X[3];																			// Keep Value adc Touch Point X
-static uint64_t tcs_ave_Y[3];																			// Keep Value adc Touch Point Y
-static uint64_t dis_XD_hor[3] = {32,287,160}; 															// Value refer Point X at 10% of Display(X=320:0-319) 3 Position
-static uint64_t dis_YD_hor[3] = {215,120,24}; 															// Value refer Point Y at 10% of Display(Y=240:0-239) 3 Position
-static uint32_t divider,An,Bn,Cn,Dn,En,Fn;															// Valiable for keep coefficient Calibrat and position touch Screen
-char num1,num2,num3;																		// Variable for keep data Dec to Ascii
-
-
+static uint64_t tcs_ave_X[3];								// Keep Value adc Touch Point X
+static uint64_t tcs_ave_Y[3];								// Keep Value adc Touch Point Y
+static uint64_t dis_XD_hor[3] = {32,287,160}; 				// Value refer Point X at 10% of Display(X=320:0-319) 3 Position
+static uint64_t dis_YD_hor[3] = {215,120,24}; 				// Value refer Point Y at 10% of Display(Y=240:0-239) 3 Position
+//static uint32_t divider,An,Bn,Cn,Dn,En,Fn;					// Valiable for keep coefficient Calibrat and position touch Screen																		// Variable for keep data Dec to Ascii
 
 static unsigned char	TCS_SPI_Write		(unsigned char DataByte);
 static void 			TCS_SPI_Read_Hor	(void);
 static void 			TCS_Average_X_Y		(unsigned char num);
 //static void 			TCS_Set_Matrix_Hor	(void); //used only once to calibrate
 
-void dec_to_ascii(uint64_t num)
-{
-  num1 = (num/100) + 0x30;		//Digit-100
-  num  =  num%100;
-  num2 = (num/10) + 0x30;		//Digit-10
-  num3 =  (num%10) + 0x30;		//Digit-1
-}
 
 /************/
 /* Delay ms */
@@ -54,7 +43,6 @@ static void delay_ms(unsigned long ms)
  {
   CoTimeDelay(0,0,0,ms);
  }
-
 
 void drv_tcs_load(void)
 {
