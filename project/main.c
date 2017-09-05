@@ -28,7 +28,6 @@ int main(void)
 	drv_buzz_load();
 	drv_pot_load();
 	drv_usr_int_load();
-
 	mdw_log_load();
 
 	CoInitOS (); //Init OS
