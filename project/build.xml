@@ -49,6 +49,7 @@
       <includepath path="CoOS/kernel"/>
       <includepath path="drv"/>
       <includepath path="mdw"/>
+      <includepath path="FatFs"/>
       
       <!-- arm-none-eabi-gcc compiler arguments -->
       <compilerarg value="-mcpu=cortex-m3"/>

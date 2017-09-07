@@ -14,6 +14,7 @@
 #include "mdw_error.h"
 #include "mdw_log_debug.h"
 
+
 #define STACK_SIZE 128
 
 static OS_STK	mainTaskStk[STACK_SIZE];
@@ -29,6 +30,7 @@ int main(void)
 	drv_pot_load();
 	drv_usr_int_load();
 	mdw_log_load();
+	drv_sd_load();
 
 	CoInitOS (); //Init OS
 
