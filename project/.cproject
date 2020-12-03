@@ -13,9 +13,9 @@
 			<storageModule moduleId="org.eclipse.cdt.core.externalSettings">
 				<externalSettings containerId="org.coocox.ExternalSettings" factoryId="org.eclipse.cdt.core.extension.container.factory">
 					<externalSetting>
-						<entry flags="" kind="includePath" name="C:\dev\CoIDE\gcc\arm-none-eabi\include"/>
-						<entry flags="" kind="includePath" name="C:\dev\CoIDE\gcc\lib\gcc\arm-none-eabi\4.5.2\include"/>
-						<entry flags="" kind="includePath" name="C:\dev\CoIDE\gcc\lib\gcc\arm-none-eabi\4.5.2\include-fixed"/>
+						<entry flags="" kind="includePath" name="C:\dev\CoIDE131\gcc\arm-none-eabi\include"/>
+						<entry flags="" kind="includePath" name="C:\dev\CoIDE131\gcc\lib\gcc\arm-none-eabi\4.5.2\include"/>
+						<entry flags="" kind="includePath" name="C:\dev\CoIDE131\gcc\lib\gcc\arm-none-eabi\4.5.2\include-fixed"/>
 						<entry flags="" kind="includePath" name="."/>
 						<entry flags="" kind="includePath" name="cmsis"/>
 						<entry flags="" kind="includePath" name="cmsis_boot"/>
@@ -36,9 +36,9 @@
 			<storageModule moduleId="org.eclipse.cdt.internal.ui.text.commentOwnerProjectMappings"/>
 			<storageModule moduleId="org.eclipse.cdt.core.pathentry">
 				<pathentry kind="src" path=""/>
-				<pathentry include="C:/dev/CoIDE/gcc/arm-none-eabi/include" kind="inc" path="" system="true"/>
-				<pathentry include="C:/dev/CoIDE/gcc/lib/gcc/arm-none-eabi/4.5.2/include" kind="inc" path="" system="true"/>
-				<pathentry include="C:/dev/CoIDE/gcc/lib/gcc/arm-none-eabi/4.5.2/include-fixed" kind="inc" path="" system="true"/>
+				<pathentry include="C:/dev/CoIDE131/gcc/arm-none-eabi/include" kind="inc" path="" system="true"/>
+				<pathentry include="C:/dev/CoIDE131/gcc/lib/gcc/arm-none-eabi/4.5.2/include" kind="inc" path="" system="true"/>
+				<pathentry include="C:/dev/CoIDE131/gcc/lib/gcc/arm-none-eabi/4.5.2/include-fixed" kind="inc" path="" system="true"/>
 				<pathentry include="C:/Users/mati/Documents/Git/project" kind="inc" path="" system="true"/>
 				<pathentry include="C:/Users/mati/Documents/Git/project/cmsis" kind="inc" path="" system="true"/>
 				<pathentry include="C:/Users/mati/Documents/Git/project/cmsis_boot" kind="inc" path="" system="true"/>

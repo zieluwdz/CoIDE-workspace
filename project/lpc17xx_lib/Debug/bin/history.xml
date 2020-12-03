@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="4.5.2 -O0 -nostartfiles -Map=project.map -mcpu=cortex-m3 -mthumb -LC:\Users\mati\Documents\Git\project --gc-sections -TC:\Users\mati\Documents\Git\project\link.ld -g -L..\.. -lm">
+      <target file="project.elf" lastModified="15e6d09ff86">
+         <source file="..\obj\spi.o" lastModified="15e6d09f3b7"/>
+         <source file="..\obj\kernelHeap.o" lastModified="15e6d09f3f6"/>
+         <source file="..\obj\lpc17xx_timer.o" lastModified="15e6d09f456"/>
+         <source file="..\obj\core.o" lastModified="15e6d09f492"/>
+         <source file="..\obj\drv_buzz.o" lastModified="15e6d09f4df"/>
+         <source file="..\obj\core_cm3.o" lastModified="15e6d09f526"/>
+         <source file="..\obj\timer.o" lastModified="15e6d09f57e"/>
+         <source file="..\obj\lpc17xx_clkpwr.o" lastModified="15e6d09f5c5"/>
+         <source file="..\obj\mdw_error.o" lastModified="15e6d09f5f0"/>
+         <source file="..\obj\utility.o" lastModified="15e6d09f627"/>
+         <source file="..\obj\system_LPC17xx.o" lastModified="15e6d09f660"/>
+         <source file="..\obj\drv_led.o" lastModified="15e6d09f6b4"/>
+         <source file="..\obj\sdcard.o" lastModified="15e6d09f6fc"/>
+         <source file="..\obj\task.o" lastModified="15e6d09f755"/>
+         <source file="..\obj\lpc17xx_adc.o" lastModified="15e6d09f7ac"/>
+         <source file="..\obj\serviceReq.o" lastModified="15e6d09f7ef"/>
+         <source file="..\obj\main.o" lastModified="15e6d09f839"/>
+         <source file="..\obj\font.o" lastModified="15e6d09f872"/>
+         <source file="..\obj\mbox.o" lastModified="15e6d09f8b6"/>
+         <source file="..\obj\gpio.o" lastModified="15e6d09f8fb"/>
+         <source file="..\obj\mm.o" lastModified="15e6d09f93e"/>
+         <source file="..\obj\drv_sd.o" lastModified="15e6d09f973"/>
+         <source file="..\obj\startup_LPC17xx.o" lastModified="15e6d09f9a7"/>
+         <source file="..\obj\lpc17xx_libcfg_default.o" lastModified="15e6d09f9da"/>
+         <source file="..\obj\time.o" lastModified="15e6d09fa20"/>
+         <source file="..\obj\event.o" lastModified="15e6d09fa67"/>
+         <source file="..\obj\lpc17xx_pinsel.o" lastModified="15e6d09faa7"/>
+         <source file="..\obj\syscalls.o" lastModified="15e6d09fae8"/>
+         <source file="..\obj\port.o" lastModified="15e6d09fb1d"/>
+         <source file="..\obj\queue.o" lastModified="15e6d09fb65"/>
+         <source file="..\obj\mutex.o" lastModified="15e6d09fba9"/>
+         <source file="..\obj\flag.o" lastModified="15e6d09fc05"/>
+         <source file="..\obj\drv_tch.o" lastModified="15e6d09fc62"/>
+         <source file="..\obj\drv_userInt.o" lastModified="15e6d09fca5"/>
+         <source file="..\obj\drv_lcd.o" lastModified="15e6d09fd1a"/>
+         <source file="..\obj\lpc17xx_nvic.o" lastModified="15e6d09fd56"/>
+         <source file="..\obj\arch.o" lastModified="15e6d09fd8b"/>
+         <source file="..\obj\drv_pot.o" lastModified="15e6d09fdd6"/>
+         <source file="..\obj\mdw_log_debug.o" lastModified="15e6d09fe21"/>
+         <source file="..\obj\sem.o" lastModified="15e6d09fe62"/>
+         <source file="..\obj\mdw_log_debug_image.o" lastModified="15e6d09feb8"/>
+         <source file="..\obj\hook.o" lastModified="15e6d09feeb"/>
+      </target>
+   </processor>
+</history>

@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<history>
+   <processor signature="arm-none-eabi-gcc 4.4.3 i686-w64-mingw32 -mcpu=cortex-m3 -mthumb -Wall -ffunction-sections -O0 -g -c -DLPC1768 -I. -Ilpc17xx_lib -Ilpc17xx_lib\include -Icmsis_boot -Icmsis -ICoOS\portable -ICoOS -ICoOS\kernel -Idrv -Imdw -IFatFs">
+      <target file="syscalls.o" lastModified="15e6d09fae8">
+         <source file="..\..\syscalls\syscalls.c" lastModified="15e3f305149"/>
+      </target>
+      <target file="event.o" lastModified="15e6d09fa67">
+         <source file="..\..\CoOS\kernel\event.c" lastModified="15b3060d594"/>
+      </target>
+      <target file="lpc17xx_nvic.o" lastModified="15e6d09fd56">
+         <source file="..\..\lpc17xx_lib\source\lpc17xx_nvic.c" lastModified="15e10be3e06"/>
+      </target>
+      <target file="drv_buzz.o" lastModified="15e6d09f4df">
+         <source file="..\..\drv\drv_buzz.c" lastModified="15e1162d480"/>
+      </target>
+      <target file="drv_pot.o" lastModified="15e6d09fdd6">
+         <source file="..\..\drv\drv_pot.c" lastModified="15e4987da28"/>
+      </target>
+      <target file="spi.o" lastModified="15e6d09f3b7">
+         <source file="..\..\drv\sd\spi.c" lastModified="15e6d09b859"/>
+      </target>
+      <target file="drv_lcd.o" lastModified="15e6d09fd1a">
+         <source file="..\..\drv\drv_lcd.c" lastModified="15e53f897a1"/>
+      </target>
+      <target file="sem.o" lastModified="15e6d09fe62">
+         <source file="..\..\CoOS\kernel\sem.c" lastModified="15b3060d615"/>
+      </target>
+      <target file="queue.o" lastModified="15e6d09fb65">
+         <source file="..\..\CoOS\kernel\queue.c" lastModified="15b3060d60d"/>
+      </target>
+      <target file="mdw_log_debug.o" lastModified="15e6d09fe21">
+         <source file="..\..\mdw\mdw_log_debug.c" lastModified="15e53f897b0"/>
+      </target>
+      <target file="drv_userInt.o" lastModified="15e6d09fca5">
+         <source file="..\..\drv\drv_userInt.c" lastModified="15e1f7bb2a2"/>
+      </target>
+      <target file="arch.o" lastModified="15e6d09fd8b">
+         <source file="..\..\CoOS\portable\arch.c" lastModified="15b3060d642"/>
+      </target>
+      <target file="hook.o" lastModified="15e6d09feeb">
+         <source file="..\..\CoOS\kernel\hook.c" lastModified="15b3060d5a2"/>
+      </target>
+      <target file="mutex.o" lastModified="15e6d09fba9">
+         <source file="..\..\CoOS\kernel\mutex.c" lastModified="15b3060d5c9"/>
+      </target>
+      <target file="lpc17xx_clkpwr.o" lastModified="15e6d09f5c5">
+         <source file="..\..\lpc17xx_lib\source\lpc17xx_clkpwr.c" lastModified="15e10be3fe2"/>
+      </target>
+      <target file="serviceReq.o" lastModified="15e6d09f7ef">
+         <source file="..\..\CoOS\kernel\serviceReq.c" lastModified="15b3060d61a"/>
+      </target>
+      <target file="lpc17xx_pinsel.o" lastModified="15e6d09faa7">
+         <source file="..\..\lpc17xx_lib\source\lpc17xx_pinsel.c" lastModified="15e10be5777"/>
+      </target>
+      <target file="drv_sd.o" lastModified="15e6d09f973">
+         <source file="..\..\drv\drv_sd.c" lastModified="15e6d09b839"/>
+      </target>
+      <target file="lpc17xx_adc.o" lastModified="15e6d09f7ac">
+         <source file="..\..\lpc17xx_lib\source\lpc17xx_adc.c" lastModified="15e1ae606a5"/>
+      </target>
+      <target file="drv_tch.o" lastModified="15e6d09fc62">
+         <source file="..\..\drv\drv_tch.c" lastModified="15e53f897aa"/>
+      </target>
+      <target file="mdw_log_debug_image.o" lastModified="15e6d09feb8">
+         <source file="..\..\mdw\mdw_log_debug_image.c" lastModified="15e4987da3a"/>
+      </target>
+      <target file="mdw_error.o" lastModified="15e6d09f5f0">
+         <source file="..\..\mdw\mdw_error.c" lastModified="15e3f2fb6c1"/>
+      </target>
+      <target file="gpio.o" lastModified="15e6d09f8fb">
+         <source file="..\..\drv\sd\gpio.c" lastModified="15e6d09b840"/>
+      </target>
+      <target file="port.o" lastModified="15e6d09fb1d">
+         <source file="..\..\CoOS\portable\GCC\port.c" lastModified="15b3060d64a"/>
+      </target>
+      <target file="utility.o" lastModified="15e6d09f627">
+         <source file="..\..\CoOS\kernel\utility.c" lastModified="15b3060d638"/>
+      </target>
+      <target file="core_cm3.o" lastModified="15e6d09f526">
+         <source file="..\..\cmsis\core_cm3.c" lastModified="15a90d04357"/>
+      </target>
+      <target file="core.o" lastModified="15e6d09f492">
+         <source file="..\..\CoOS\kernel\core.c" lastModified="15b3060d58b"/>
+      </target>
+      <target file="kernelHeap.o" lastModified="15e6d09f3f6">
+         <source file="..\..\CoOS\kernel\kernelHeap.c" lastModified="15b3060d5ac"/>
+      </target>
+      <target file="system_LPC17xx.o" lastModified="15e6d09f660">
+         <source file="..\..\cmsis_boot\system_LPC17xx.c" lastModified="15a90c4397b"/>
+      </target>
+      <target file="timer.o" lastModified="15e6d09f57e">
+         <source file="..\..\CoOS\kernel\timer.c" lastModified="15b3060d634"/>
+      </target>
+      <target file="lpc17xx_timer.o" lastModified="15e6d09f456">
+         <source file="..\..\lpc17xx_lib\source\lpc17xx_timer.c" lastModified="15e10be573b"/>
+      </target>
+      <target file="flag.o" lastModified="15e6d09fc05">
+         <source file="..\..\CoOS\kernel\flag.c" lastModified="15b3060d59c"/>
+      </target>
+      <target file="font.o" lastModified="15e6d09f872">
+         <source file="..\..\drv\lcd\font.c" lastModified="15e20489a4d"/>
+      </target>
+      <target file="startup_LPC17xx.o" lastModified="15e6d09f9a7">
+         <source file="..\..\cmsis_boot\startup\startup_LPC17xx.c" lastModified="15e3ef81ab6"/>
+      </target>
+      <target file="sdcard.o" lastModified="15e6d09f6fc">
+         <source file="..\..\drv\sd\sdcard.c" lastModified="15e6d09b84d"/>
+      </target>
+      <target file="main.o" lastModified="15e6d09f839">
+         <source file="..\..\main.c" lastModified="15e6d093d38"/>
+      </target>
+      <target file="lpc17xx_libcfg_default.o" lastModified="15e6d09f9da">
+         <source file="..\..\lpc17xx_lib\source\lpc17xx_libcfg_default.c" lastModified="15e017578a7"/>
+      </target>
+      <target file="mbox.o" lastModified="15e6d09f8b6">
+         <source file="..\..\CoOS\kernel\mbox.c" lastModified="15b3060d5b4"/>
+      </target>
+      <target file="mm.o" lastModified="15e6d09f93e">
+         <source file="..\..\CoOS\kernel\mm.c" lastModified="15b3060d5bd"/>
+      </target>
+      <target file="task.o" lastModified="15e6d09f755">
+         <source file="..\..\CoOS\kernel\task.c" lastModified="15b3060d623"/>
+      </target>
+      <target file="drv_led.o" lastModified="15e6d09f6b4">
+         <source file="..\..\drv\drv_led.c" lastModified="15e4987da27"/>
+      </target>
+      <target file="time.o" lastModified="15e6d09fa20">
+         <source file="..\..\CoOS\kernel\time.c" lastModified="15b3060d62c"/>
+      </target>
+   </processor>
+</history>

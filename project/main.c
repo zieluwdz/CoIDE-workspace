@@ -14,7 +14,6 @@
 #include "mdw_error.h"
 #include "mdw_log_debug.h"
 
-
 #define STACK_SIZE 128
 
 static OS_STK	mainTaskStk[STACK_SIZE];
@@ -25,12 +24,14 @@ static void button_interrupt(void);
 
 int main(void)
 {
+	drv_sd_load();
+
 	drv_led_load();
 	drv_buzz_load();
 	drv_pot_load();
 	drv_usr_int_load();
 	mdw_log_load();
-	drv_sd_load();
+
 
 	CoInitOS (); //Init OS
 
@@ -54,14 +55,13 @@ static void main_task(void* pdata)
 
 	mdw_log_open();
 
-	mdw_log_debug("It is working well ;) well done ");
-
 	//Start up procedure
 	drv_led_start(k_OneWave,50u);
-	CoTimeDelay(0u,0u,0u,400u);
+	CoTimeDelay(0u,0u,1u,0u);
 	drv_led_stop();
 
 	drv_led_start(k_Wave,500u);
+	mdw_log_debug("[OK] Started");
 
 	//Application is in main while
 	for (;;)

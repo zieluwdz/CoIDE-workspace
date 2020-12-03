@@ -50,6 +50,8 @@ uint8_t 		SD_Init(uint8_t *cardType);
 unsigned char 	SD_sendCommand(unsigned char cmd, uint32_t arg);
 unsigned char 	SD_readSingleBlock(char *buffer,uint32_t startBlock);
 unsigned char 	SD_writeSingleBlock(char *buffer,uint32_t startBlock);
+unsigned char	SD_writeMultipleBlocks(char *inputbuffer, uint32_t startBlock, uint32_t cnt);
+unsigned char	SD_readMultipleBlocks(char *inputbuffer, uint32_t startBlock, uint32_t cnt);
 unsigned char 	SD_erase (uint32_t startBlock, uint32_t totalBlocks);
 
 #endif

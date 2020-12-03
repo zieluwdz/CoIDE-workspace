@@ -22,10 +22,10 @@ All the rights will be still with original author www.dharmanitech.com.
 https://www.win.tue.nl/~aeb/linux/fs/fat/fat-1.html
 http://www.tavi.co.uk/phobos/fat.html
  *************************************************************************************************************************************/
-
+#include "string.h"
 #include "spi.h"
 #include "sdcard.h"
-
+#include "mdw_error.h"
 
 uint8_t V_SdHighcapacityFlag_u8 = 0;
 uint8_t init_SdCard(uint8_t *cardType);
@@ -66,7 +66,7 @@ uint8_t SD_Init(uint8_t *cardType)
 
     if(response == SDCARD_INIT_SUCCESSFUL)
     {
-        //response = getBootSectorData (); //read boot sector and keep necessary data in global variables
+        //response = getBootSectorData(); //read boot sector and keep necessary data in global variables
     }
 
     return response;
@@ -162,7 +162,7 @@ unsigned char SD_erase (uint32_t startBlock, uint32_t totalBlocks)
     if(response != 0x00)
         return response;
 
-    response = SD_sendCommand(ERASE_SELECTED_BLOCKS, 0); //erase all selected blocks
+    response = SD_sendCommand(ERASE_SELECTED_BLOCKS, 0xff); //erase all selected blocks
     if(response != 0x00)
         return response;
 
@@ -210,6 +210,27 @@ unsigned char SD_readSingleBlock(char *inputbuffer,uint32_t startBlock)
 
     return 0;
 }
+
+unsigned char SD_readMultipleBlocks(char *inputbuffer, uint32_t startBlock, uint32_t cnt)
+{
+	uint32_t	counter = 0u;
+	char 		*pDataPointer = inputbuffer;
+	char		buffer[512u];
+	uint32_t 	newStartBlock = startBlock;
+
+	do
+	{
+		SD_readSingleBlock(&buffer[0u], newStartBlock);
+		memcpy(pDataPointer,&buffer[0], 512u);
+		pDataPointer = pDataPointer + 512u; //one Block
+		newStartBlock ++;
+		counter ++;
+	}
+	while(counter < cnt);
+
+	return 0;
+}
+
 
 //******************************************************************
 //Function	: to write to a single block of SD card
@@ -271,6 +292,74 @@ unsigned char SD_writeSingleBlock(char *inputbuffer,uint32_t startBlock)
     return 0;
 }
 
+unsigned char SD_writeMultipleBlocks(char *inputbuffer, uint32_t startBlock, uint32_t cnt)
+{
+	unsigned char response;
+	uint16_t i, retry=0;
+
+	response = SD_sendCommand(WRITE_MULTIPLE_BLOCKS, startBlock); //write a Block command
+
+	    if(response != 0x00) return response; //check for SD status: 0x00 - OK (No flags set)
+
+	    SPI_EnableChipSelect();
+
+	    uint32_t blockNum = 0u;
+	    do
+	    {
+
+	    SPI_Write(0xfe);     //Send start block token 0xfe (0x11111110)
+
+	    for(i=0; i<512u; i++)    //send 512 bytes data
+	    SPI_Write(inputbuffer[i]+(512u*blockNum));
+
+	    blockNum++;
+
+	    }
+	    while(blockNum < cnt);
+
+	    response = SD_sendCommand(STOP_TRANSMISSION, startBlock); //write a Block command
+	    	    if(response != 0x00) return response; //check for SD status: 0x00 - OK (No flags set)
+
+
+
+	    	    SPI_Write(0xff);     //transmit dummy CRC (16-bit), CRC is ignored here
+	    	    	    SPI_Write(0xff);
+
+	    	    	    response = SPI_Read();
+
+	    	    	    if( (response & 0x1f) != 0x05) //response= 0xXXX0AAA1 ; AAA='010' - data accepted
+	    	    	    {                              //AAA='101'-data rejected due to CRC error
+	    	    	        SPI_DisableChipSelect();              //AAA='110'-data rejected due to write error
+	    	    	        return response;
+	    	    	    }
+
+	    	    	    while(!SPI_Read()) //wait for SD card to complete writing and get idle
+	    	    	    {
+	    	    	        if(retry++ > 0xfffe)
+	    	    	        {
+	    	    	            SPI_DisableChipSelect();
+	    	    	            return 1;
+	    	    	        }
+	    	    	    }
+
+	    	    	    SPI_DisableChipSelect();
+
+	    SPI_Write(0xff);   //just spend 8 clock cycle delay before reasserting the CS line
+	    SPI_EnableChipSelect();         //re-asserting the CS line to verify if card is still busy
+
+	    while(!SPI_Read()) //wait for SD card to complete writing and get idle
+	    {
+	        if(retry++ > 0xfffe)
+	        {
+	            SPI_DisableChipSelect();
+	            return 1;
+	        }
+	    }
+	    SPI_DisableChipSelect();
+
+
+	    return 0;
+}
 
 uint8_t init_SdCard(uint8_t *cardType)
 {
@@ -291,7 +380,7 @@ uint8_t init_SdCard(uint8_t *cardType)
         if(retry>0x20)
             return SDCARD_NOT_DETECTED;   //time out, card not detected
 
-    } while(response != 0x01);
+    }while(response != 0x01);
 
     SPI_DisableChipSelect();
     SPI_Write (0xff);
